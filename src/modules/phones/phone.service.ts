@@ -7,6 +7,12 @@ const createProduct = (payload: TProduct) => {
   return result;
 };
 
+const getProducts = async () => {
+  const result = await Phone.find();
+  return result;
+};
+
 export const ProductServices = {
   createProduct,
+  getProducts,
 };
