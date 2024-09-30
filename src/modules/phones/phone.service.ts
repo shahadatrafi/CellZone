@@ -12,8 +12,17 @@ const getProducts = async () => {
   return result;
 };
 
-const updateProduct = async (productId: string, productData: TProduct) => {
+const getSingleProduct = async (productId: string) => {
+  const singleProduct = await Phone.findById(productId);
 
+  if (!productId) {
+    throw new Error('Product not found');
+  }
+
+  return singleProduct;
+};
+
+const updateProduct = async (productId: string, productData: TProduct) => {
   // Assuming you are using a model like `Product` for database operations
   const product = await Phone.findById(productId);
 
@@ -30,9 +39,9 @@ const updateProduct = async (productId: string, productData: TProduct) => {
   return updatedProduct;
 };
 
-
 export const ProductServices = {
   createProduct,
   getProducts,
-  updateProduct
+  getSingleProduct,
+  updateProduct,
 };
