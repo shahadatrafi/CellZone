@@ -39,9 +39,16 @@ const updateProduct = async (productId: string, productData: TProduct) => {
   return updatedProduct;
 };
 
+const deleteProduct = async (productId: string) => {
+  const product = await Phone.findByIdAndDelete(productId);
+
+  return product;
+};
+
 export const ProductServices = {
   createProduct,
   getProducts,
   getSingleProduct,
   updateProduct,
+  deleteProduct,
 };
