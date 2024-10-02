@@ -7,8 +7,15 @@ const createProduct = (payload: TProduct) => {
   return result;
 };
 
-const getProducts = async () => {
-  const result = await Phone.find();
+const getProducts = async (searchTerm: string) => {
+  // console.log(searchTerm);
+
+  if (!searchTerm) {
+    const result = await Phone.find();
+    return result;
+  }
+
+  const result = await Phone.find({ $text: { $search: `${searchTerm}` } });
   return result;
 };
 
