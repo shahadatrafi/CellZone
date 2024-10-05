@@ -12,7 +12,11 @@ const createOrder = async (req: Request, res: Response) => {
 };
 
 const getOrders = async (req: Request, res: Response) => {
-  const result = await orderServices.getOrders();
+
+   const email = req.query.email as string;
+   console.log(email);
+
+  const result = await orderServices.getOrders(email);
   res.json({
     success: true,
     message: 'Orders fetched successfully!',
