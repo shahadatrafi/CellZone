@@ -8,21 +8,18 @@ const createOrder = async (payload: TOrder) => {
 };
 
 const getOrders = async (email: string) => {
-
-  if(!email){
+  if (!email) {
     const result = await Order.find();
-    return result
+    return result;
   }
 
-  console.log(`email form service ${email}`);
+  // console.log(`email form service ${email}`);
 
-  const result = await Order.find({$or: [{email: email}]});
+  const result = await Order.find({ $or: [{ email: email }] });
   return result;
-
-    
-}
+};
 
 export const orderServices = {
   createOrder,
-  getOrders
+  getOrders,
 };

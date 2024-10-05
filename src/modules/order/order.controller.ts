@@ -12,9 +12,8 @@ const createOrder = async (req: Request, res: Response) => {
 };
 
 const getOrders = async (req: Request, res: Response) => {
-
-   const email = req.query.email as string;
-   console.log(email);
+  const email = req.query.email as string;
+  //  console.log(email);
 
   const result = await orderServices.getOrders(email);
   res.json({
@@ -26,5 +25,5 @@ const getOrders = async (req: Request, res: Response) => {
 
 export const orderControllers = {
   createOrder,
-  getOrders
+  getOrders,
 };
